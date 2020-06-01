@@ -5,11 +5,11 @@ using UnityEngine;
 public class bot : MonoBehaviour
 {
 
-    float speed = 4f; // moveSpeed
+    float speed = 3f; // moveSpeed
     Animator animator;
     public Transform ball;
     public Transform aimTarget; // aiming gameObject
-    float force = 13;
+    float force = 12;
 
     
     Vector3 targetPosition; // position to where the bot will want to move
@@ -37,7 +37,7 @@ public class bot : MonoBehaviour
 	if(other.CompareTag("Ball"))
 	{
 		Vector3 dir= aimTarget.position - transform.position;
-		other.GetComponent<Rigidbody>().velocity=dir.normalized*force+new Vector3(0,6,0);
+		other.GetComponent<Rigidbody>().velocity=dir.normalized*force+new Vector3(0,5,0);
 		Vector3 ballDir = ball.position - transform.position;
 		if(ballDir.z >+ 0)
 		{ 

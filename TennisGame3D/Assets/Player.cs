@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 	}
 	if(hitting)
 	{
-		aimTarget.Translate(new Vector3(0,0,h)*speed*Time.deltaTime);
+		aimTarget.Translate(new Vector3(0,0,h)*speed*2*Time.deltaTime);
 	}
     	
 	if( (h!=0 || v!=0) && !hitting )
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 	if(other.CompareTag("Ball"))
 	{
 		Vector3 dir= aimTarget.position - transform.position;
-		other.GetComponent<Rigidbody>().velocity=dir.normalized*force+new Vector3(0,6,0);
+		other.GetComponent<Rigidbody>().velocity=dir.normalized*force+new Vector3(0,5,0);
 		Vector3 ballDir = ball.position - transform.position;
 		if(ballDir.x >+ 0)
 		{ 
