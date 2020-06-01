@@ -5,13 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {   
     public Transform aimTarget;
+    public Transform ball;
     float speed=4f;
     float force=13;
     bool hitting;
+    Animator animator;
+    Vector3 aimTargetInitialPosition;
     // Start is called before the first frame update
     void Start()
     {
-        
+       animator = GetComponent<Animator>(); 
+       aimTargetInitialPosition = aimTarget.position;	
     }
 
     // Update is called once per frame
@@ -45,6 +49,18 @@ public class Player : MonoBehaviour
 	{
 		Vector3 dir= aimTarget.position - transform.position;
 		other.GetComponent<Rigidbody>().velocity=dir.normalized*force+new Vector3(0,6,0);
-	}
+		Vector3 ballDir = ball.position - transform.position;
+		if(ballDir.x >+ 0)
+		{ 
+			animator.Play("forehand");
+			
+     		}
+		else
+		{
+			animator.Play("backhand");
+			
+		}
+		aimTarget.position = aimTargetInitialPosition;
+	}		
     }
 }
